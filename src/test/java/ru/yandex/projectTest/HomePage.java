@@ -22,6 +22,7 @@ public class HomePage {
     private By question7 = By.xpath(".//div[@class='accordion__item'][7]"); // вопрос 7
     private By question8 = By.xpath(".//div[@class='accordion__item'][8]"); // вопрос 8
 
+    public static By getQuestion (String xpathExpression) { return By.xpath(xpathExpression); }
 
     private By answer1 = By.id("accordion__panel-0"); //ответ на вопрос 1
     private By answer2 = By.id("accordion__panel-1"); //ответ на вопрос 2
@@ -73,35 +74,23 @@ public class HomePage {
         driver.findElement(question8).click();
     }
 
+
+
+
+
+
+    //universal method to click question
+    public void clickQuestion(By question) {driver.findElement(question).click(); }
+
     // Метод для сравнения ответа на вопрос с правильным текстом
     public void isCorrectText(String answer, String text) {
         MatcherAssert.assertThat(answer, is(text));
     }
 
-    // Геттеры для получения текса ответов
-    public String getAnswer1() {
-        return driver.findElement(answer1).getText();
-    }
-    public String getAnswer2() {
-        return driver.findElement(answer2).getText();
-    }
-    public String getAnswer3() {
-        return driver.findElement(answer3).getText();
-    }
-    public String getAnswer4() {
-        return driver.findElement(answer4).getText();
-    }
-    public String getAnswer5() {
-        return driver.findElement(answer5).getText();
-    }
-    public String getAnswer6() {
-        return driver.findElement(answer6).getText();
-    }
-    public String getAnswer7() {
-        return driver.findElement(answer7).getText();
-    }
-    public String getAnswer8() {
-        return driver.findElement(answer8).getText();
+
+    //  получение ответа
+    public String getAnswer(By answer) {
+        return driver.findElement(answer).getText();
     }
 
     // Методы для клика по кнопкам "Заказать"
